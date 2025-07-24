@@ -67,7 +67,8 @@ function filterCharacters(answers: Record<string, string>) {
       }
       // Normal case
       else {
-        if ((char as any)[q.key] !== answers[q.key]) return false;
+        if (char[q.key as keyof Character]?.toString() !== answers[q.key])
+          return false;
       }
     }
 
