@@ -4,10 +4,20 @@ import { useState } from "react";
 import { Button, Select, SelectItem, Card, CardHeader } from "@heroui/react";
 import characters from "./data/characters.json";
 
+// Define a type for Genshin characters
+type Character = {
+  name: string;
+  element: string | string[];
+  weapon: string;
+  rarity: number;
+  region: string;
+  // ...add other fields if needed
+};
+
 const questions = [
   {
     key: "element",
-    label: "What is the character's element?",
+    label: "What is the character&apos;s element?",
     options: ["Anemo", "Cryo", "Dendro", "Electro", "Geo", "Hydro", "Pyro"],
   },
   {
@@ -17,7 +27,7 @@ const questions = [
   },
   {
     key: "rarity",
-    label: "What is the character's rarity?",
+    label: "What is the character&apos;s rarity?",
     options: ["4", "5"],
   },
   {
@@ -38,7 +48,7 @@ const questions = [
 ];
 
 function filterCharacters(answers: Record<string, string>) {
-  return characters.filter((char: any) => {
+  return (characters as Character[]).filter((char: Character) => {
     for (const q of questions) {
       if (!answers[q.key]) continue;
 
@@ -52,11 +62,12 @@ function filterCharacters(answers: Record<string, string>) {
       }
       // Special handling for rarity
       else if (q.key === "rarity") {
-        if (String(char[q.key]) !== answers[q.key]) return false;
+        if (String(char[q.key as keyof Character]) !== answers[q.key])
+          return false;
       }
       // Normal case
       else {
-        if (char[q.key] !== answers[q.key]) return false;
+        if ((char as any)[q.key] !== answers[q.key]) return false;
       }
     }
 
@@ -218,7 +229,7 @@ export default function Home() {
               {filtered.length === 1 && (
                 <div className="text-center">
                   <div className="font-semibold text-lg mb-2 text-green-600">
-                    You're thinking of:
+                    You&apos;re thinking of:
                   </div>
                   <div className="text-2xl font-bold text-gray-900">
                     {filtered[0].name}
@@ -235,7 +246,7 @@ export default function Home() {
                     Possible characters:
                   </div>
                   <ul className="text-base text-gray-700 font-medium">
-                    {filtered.slice(0, 5).map((char: any) => (
+                    {filtered.slice(0, 5).map((char: Character) => (
                       <li key={char.name}>{char.name}</li>
                     ))}
                   </ul>
