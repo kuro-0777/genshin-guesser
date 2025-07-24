@@ -230,7 +230,7 @@ export default function Home() {
               {filtered.length === 1 && (
                 <div className="text-center">
                   <div className="font-semibold text-lg mb-2 text-green-600">
-                    You're thinking of:
+                    {"You're thinking of:"}
                   </div>
                   <div className="text-2xl font-bold text-gray-900">
                     {filtered[0].name}
