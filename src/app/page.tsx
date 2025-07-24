@@ -11,7 +11,6 @@ type Character = {
   weapon: string;
   rarity: number;
   region: string;
-  // ...add other fields if needed
 };
 
 const questions = [
@@ -127,7 +126,7 @@ export default function Home() {
       <Card className="w-full max-w-md shadow-xl border-0 bg-white/90 dark:bg-gray-900/90">
         <CardHeader className="flex flex-col items-center gap-2 pb-0">
           <h2 className="text-2xl font-bold text-center mt-2 text-gray-900">
-            Genshin Character Guesser
+            {"Genshin Character Guesser (Till 5.8)"}
           </h2>
         </CardHeader>
         <div className="p-4">
