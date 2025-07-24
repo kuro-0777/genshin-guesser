@@ -17,7 +17,7 @@ type Character = {
 const questions = [
   {
     key: "element",
-    label: "What is the character&apos;s element?",
+    label: "What is the character's element?",
     options: ["Anemo", "Cryo", "Dendro", "Electro", "Geo", "Hydro", "Pyro"],
   },
   {
@@ -27,7 +27,7 @@ const questions = [
   },
   {
     key: "rarity",
-    label: "What is the character&apos;s rarity?",
+    label: "What is the character's rarity?",
     options: ["4", "5"],
   },
   {
@@ -230,7 +230,7 @@ export default function Home() {
               {filtered.length === 1 && (
                 <div className="text-center">
                   <div className="font-semibold text-lg mb-2 text-green-600">
-                    You&apos;re thinking of:
+                    You're thinking of:
                   </div>
                   <div className="text-2xl font-bold text-gray-900">
                     {filtered[0].name}
